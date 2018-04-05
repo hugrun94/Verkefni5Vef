@@ -11,10 +11,8 @@ export default class Home extends Component {
 
 
   async componentDidMount() {
-  	console.log("poop")
     try {
       const data = await this.fetchData("https://vefforritun2-2018-v4-synilausn.herokuapp.com/stats");
-      console.log("poop")
       this.setState({ data, loading: false });
     } catch (e) {
       console.error('Error fetching data', e);
@@ -25,7 +23,6 @@ export default class Home extends Component {
   async fetchData(url) {
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data);
     return data;
   }
 
@@ -40,7 +37,6 @@ export default class Home extends Component {
       return (<div>Villa við að sækja gögn</div>);
     }
     //ASDF KANNSKI LAGA RÖÐ HÉR
-    console.log("poop")
     return (
       <div className="home">
 

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 import './School.css';
 import Department from '../department';
 
@@ -36,7 +35,6 @@ export default class School extends Component {
   async fetchData(url) {
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data)
     return data;
   }
 

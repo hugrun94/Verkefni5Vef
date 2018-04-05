@@ -36,7 +36,6 @@ export default class Navigation extends Component {
       return (<div>Villa við að sækja gögn</div>);
     }
 
-    console.log("render");
     const shit = data.schools.map((school) => 	
       
         <li key={school.slug}>
