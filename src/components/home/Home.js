@@ -1,18 +1,73 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+
 
 import './Home.css';
 
 /* hér ætti að sækja forsíðu vefþjónustu til að sækja stats */
 
 export default class Home extends Component {
+	state = { data: null, loading: true, error: false }
+
+
+
+  async componentDidMount() {
+  	console.log("poop")
+    try {
+      const data = await this.fetchData("https://vefforritun2-2018-v4-synilausn.herokuapp.com/stats");
+      console.log("poop")
+      this.setState({ data, loading: false });
+    } catch (e) {
+      console.error('Error fetching data', e);
+      this.setState({ error: true, loading: false });
+    }
+  }
+
+  async fetchData(url) {
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log(data);
+    return data;
+  }
 
   render() {
+    const { data, loading, error } = this.state;
 
+    if (loading) {
+      return (<div>Sæki gögn...</div>);
+    }
+
+    if (error) {
+      return (<div>Villa við að sækja gögn</div>);
+    }
+    //ASDF KANNSKI LAGA RÖÐ HÉR
+    console.log("poop")
     return (
       <div className="home">
-        <p>útfæra</p>
+
+      <table>
+      <tbody>
+      	<tr>
+      		<th>Meðalfjöldi nemenda í prófum</th>
+      		<th>{data.stats.averageStudents}</th>
+      	</tr>
+      	<tr>
+      		<th>Mesti fjöldi nemenda í prófi</th>
+      		<th>{data.stats.max}</th>
+      	</tr>
+      	<tr>
+      		<th>Minnsti fjöldi nemenda í prófi</th>
+      		<th>{data.stats.min}</th>
+      	</tr>
+      	<tr>
+      		<th>Fjöldi nemenda í öllum prófum</th>
+      		<th>{data.stats.numStudents}</th>
+      	</tr>
+      	<tr>
+      		<th>Fjöldi prófa</th>
+      		<th>{data.stats.numTests}</th>
+      	</tr>
+      	</tbody>
+      </table>
       </div>
     );
   }

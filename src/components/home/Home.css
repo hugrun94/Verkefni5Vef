@@ -1,1 +1,12 @@
-/* útfæra */
+table {
+    width: 40%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+    font-size: 14px;
+    margin: 100px;
+}
+
+

@@ -1,1 +1,11 @@
-/* útfæra */
+
+.department tr:nth-child(2n+2) {background-color: #eee}
+.department table{
+	width:100%;
+	padding:10px;
+}
+
+.department a{
+	text-decoration: none;
+	font-weight: 900;
+}

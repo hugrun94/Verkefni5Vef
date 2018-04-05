@@ -1,1 +1,10 @@
-/* útfæra */
+.school li{
+	 list-style-type: none;
+	 border-bottom: 2px solid;
+	 padding-bottom: 10px;
+	 padding-top: 10px;
+}
+.school{
+	font-weight: normal;
+
+}

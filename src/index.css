@@ -24,6 +24,9 @@ h2,
 h3 {
   font-family: 'Noto serif', serif;
 }
+h1{
+  text-align: center;
+}
 
 a {
   text-decoration: underline;

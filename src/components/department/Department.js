@@ -9,13 +9,51 @@ import './Department.css';
  */
 
 export default class Exams extends Component {
+	static propTypes = {
+		heading: PropTypes.String,
+		courses: PropTypes.String,
+	    visible: PropTypes.bool,
+	    onHeaderClick: PropTypes.func,
+	 }
 
-  render() {
+	  static defaultProps = {
+	    visible: true,
+	    onHeaderClick: () => {},
+	  }
 
-    return (
-      <section className="department">
-        <p>útfæra</p>
-      </section>
-    );
-  }
+
+render(){
+const {heading, courses, visible, onHeaderClick } = this.props;
+const plus = visible ? '-':'+';
+
+return (
+      <li className="department">
+        <h3 onClick={onHeaderClick} className="school"><a>{plus}</a>{heading}</h3>
+        {visible && (
+          <div>
+          <table>
+          <tbody>
+          <tr>
+          <th>Auðkenni</th>
+          <th>Námskeið</th>
+          <th>Fjöldi</th>
+          <th>Dagsetning</th>
+          </tr>
+          {(courses).map((test) => (
+          	<tr key ={test.course}>
+          	<td>{test.course}</td>
+          	<td>{test.name}</td>
+          	<td>{test.students}</td>
+          	<td>{test.date}</td>
+          	</tr>
+          	))}
+          </tbody>
+          </table>
+          </div>
+        )}
+      </li>
+  );
 }
+
+}
+

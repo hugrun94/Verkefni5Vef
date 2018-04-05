@@ -1,1 +1,9 @@
 /* útfæra */
+ .navigation {
+  display: flex;
+  flex-direction:row;
+  justify-content: space-between;
+  list-style-type: none;
+  padding-bottom: 10px;
+  padding-top: 10px; 
+}
